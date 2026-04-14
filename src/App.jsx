@@ -23,7 +23,10 @@ function App() {
 
       <Summary transactions={transactions} />
       <TransactionForm onAdd={(t) => setTransactions([...transactions, t])} />
-      <TransactionList transactions={transactions} />
+      <TransactionList
+        transactions={transactions}
+        onDelete={(id) => setTransactions(transactions.filter(t => t.id !== id))}
+      />
     </div>
   );
 }
