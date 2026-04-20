@@ -3,6 +3,7 @@ import './App.css'
 import Summary from './Summary'
 import TransactionForm from './TransactionForm'
 import TransactionList from './TransactionList'
+import SpendingChart from './SpendingChart'
 
 function App() {
   const [transactions, setTransactions] = useState([
@@ -23,6 +24,7 @@ function App() {
 
       <Summary transactions={transactions} />
       <TransactionForm onAdd={(t) => setTransactions([...transactions, t])} />
+      <SpendingChart transactions={transactions} />
       <TransactionList
         transactions={transactions}
         onDelete={(id) => setTransactions(transactions.filter(t => t.id !== id))}
