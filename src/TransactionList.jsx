@@ -1,6 +1,5 @@
 import { useState } from 'react'
-
-const categories = ["food", "housing", "utilities", "transport", "entertainment", "salary", "other"];
+import { CATEGORIES } from './constants'
 
 const categoryColors = {
   food:          '#f5c842',
@@ -35,7 +34,7 @@ function TransactionList({ transactions, onDelete }) {
         </select>
         <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
           <option value="all">All Categories</option>
-          {categories.map(cat => (
+          {CATEGORIES.map(cat => (
             <option key={cat} value={cat}>{cat}</option>
           ))}
         </select>
@@ -66,7 +65,7 @@ function TransactionList({ transactions, onDelete }) {
                 </span>
               </td>
               <td className={`td-amount ${t.type === "income" ? "income-amount" : "expense-amount"}`}>
-                {t.type === "income" ? "+" : "-"}${t.amount}
+                {t.type === "income" ? "+" : "-"}${parseFloat(t.amount).toFixed(2)}
               </td>
               <td>
                 <button

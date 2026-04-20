@@ -157,7 +157,7 @@ body {
 }
 
 /* ── Form ── */
-form {
+.add-transaction form {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -193,9 +193,31 @@ form select:focus {
 
 form input::placeholder { color: var(--text-muted); }
 
-form input[type="text"]   { flex: 2; min-width: 120px; }
-form input[type="number"] { flex: 1; min-width: 90px;  }
+form input[type="text"]   { flex: 2; min-width: 120px; width: 100%; }
+form input[type="number"] { flex: 1; min-width: 90px; width: 100%; }
 form select               { flex: 1; min-width: 105px; }
+
+.field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.field-wrap input[type="text"]   { flex: none; min-width: 120px; }
+.field-wrap input[type="number"] { flex: none; min-width: 90px; }
+
+.input-error {
+  border-color: var(--expense) !important;
+  box-shadow: 0 0 0 3px rgba(255, 79, 112, 0.15) !important;
+}
+
+.field-error {
+  font-size: 11px;
+  color: var(--expense);
+  font-weight: 500;
+  padding-left: 2px;
+}
 
 form button {
   background: var(--accent);

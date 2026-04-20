@@ -25,11 +25,11 @@ function App() {
       </header>
 
       <Summary transactions={transactions} />
-      <TransactionForm onAdd={(t) => setTransactions([...transactions, t])} />
+      <TransactionForm onAdd={(t) => setTransactions(prev => [...prev, t])} />
       <SpendingChart transactions={transactions} />
       <TransactionList
         transactions={transactions}
-        onDelete={(id) => setTransactions(transactions.filter(t => t.id !== id))}
+        onDelete={(id) => setTransactions(prev => prev.filter(t => t.id !== id))}
       />
     </div>
   );
