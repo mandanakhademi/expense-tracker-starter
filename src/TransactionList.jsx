@@ -2,6 +2,16 @@ import { useState } from 'react'
 
 const categories = ["food", "housing", "utilities", "transport", "entertainment", "salary", "other"];
 
+const categoryColors = {
+  food:          '#f5c842',
+  housing:       '#5b6cff',
+  utilities:     '#00a8ff',
+  transport:     '#ff8c42',
+  entertainment: '#c060ff',
+  salary:        '#00e0a0',
+  other:         '#7a83a0',
+};
+
 function TransactionList({ transactions, onDelete }) {
   const [filterType, setFilterType] = useState("all");
   const [filterCategory, setFilterCategory] = useState("all");
@@ -44,10 +54,18 @@ function TransactionList({ transactions, onDelete }) {
         <tbody>
           {filteredTransactions.map(t => (
             <tr key={t.id}>
-              <td>{t.date}</td>
+              <td className="td-date">{t.date}</td>
               <td>{t.description}</td>
-              <td>{t.category}</td>
-              <td className={t.type === "income" ? "income-amount" : "expense-amount"}>
+              <td>
+                <span className="category-badge">
+                  <span
+                    className="category-dot"
+                    style={{ background: categoryColors[t.category] ?? '#7a83a0' }}
+                  />
+                  {t.category}
+                </span>
+              </td>
+              <td className={`td-amount ${t.type === "income" ? "income-amount" : "expense-amount"}`}>
                 {t.type === "income" ? "+" : "-"}${t.amount}
               </td>
               <td>
